@@ -22,7 +22,7 @@ impl GithubClient {
     }
 
     pub async fn fetch_repo(&self, owner: &str, repo: &str) -> Result<GithubRepo> {
-        let url = format!("{}/repo/{}/{}", self.base_url, owner, repo);
+        let url = format!("{}/repos/{}/{}", self.base_url, owner, repo);
 
         let response = self
             .client
