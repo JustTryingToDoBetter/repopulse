@@ -14,7 +14,7 @@ impl GithubClient {
         }
     }
 
-    pub fn with_base(base_url: String) -> Self {
+    pub fn with_base_url(base_url: String) -> Self {
         Self {
             client: Client::new(),
             base_url,
