@@ -1,6 +1,6 @@
 use anyhow::{anyhow, Result};
 use reqwest::Client;
-
+use crate::models::GithubRepo;
 pub struct GithubClient {
     client: Client,
     base_url: String,
@@ -31,16 +31,16 @@ impl GithubClient {
             .send()
             .await?;
         
-        if !response.status.is_success(){
+        if !response.status().is_success(){
             return Err(anyhow!(
                 "Github API request failed with status: {}",
                 response.status()
             ));
         }
 
-        let repo = response.json::<GithubRepo>().await();
+        let repo = response.json::<GithubRepo>().await?;
 
-        Ok(Repo)
+        Ok(repo)
     }
 }
 

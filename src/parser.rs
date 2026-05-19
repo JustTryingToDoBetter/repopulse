@@ -3,9 +3,9 @@ use anyhow::{anyhow, Result};
 use crate::models::RepoSummary;
 
 pub fn parse_github_url(url: &str) -> Result<RepoSummary> {
-    let cleaned = url.trim().trim_end_matches('/')
+    let cleaned = url.trim().trim_end_matches('/');
 
-    let parts: Vec<&str> = cleaned.split('/').collect()
+    let parts: Vec<&str> = cleaned.split('/').collect();
 
     if parts.len() < 2 {
         return Err(anyhow!("Invalid Github URL"));
@@ -14,7 +14,7 @@ pub fn parse_github_url(url: &str) -> Result<RepoSummary> {
     let repo = parts
         .last()
         .ok_or_else(|| anyhow!("Missing Repo Name"))?
-        .to_string()
+        .to_string();
     
     let owner = parts
         .get(parts.len() - 2)

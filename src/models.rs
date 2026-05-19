@@ -6,7 +6,7 @@ pub struct GithubRepo{
     pub stargazers_count: u32,
     pub forks_count: u32, 
     pub open_issues_count: u32,
-    pub language: Options<String>,
+    pub language: Option<String>,
     pub updated_at: String, 
 }
 
